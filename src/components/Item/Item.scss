@@ -1,0 +1,26 @@
+ @import '../../Styles/Variables.scss';
+ 
+ .item {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: $text-color;
+  background-color: $card-background;
+  padding: .4rem .6rem;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: .25rem;
+  -webkit-border-radius: .25rem;
+  -moz-border-radius: .25rem;
+  -ms-border-radius: .25rem;
+  -o-border-radius: .25rem;
+  box-shadow: $box-shadow-1 5px 5px, $box-shadow-2 10px 10px, $box-shadow-3 15px 15px, $box-shadow-4 20px 20px, $box-shadow-5 25px 25px;
+ }
+
+ .item:hover {
+  background-color: rgb(42, 42, 42);
+  transform: translateY(-2px);
+}
+

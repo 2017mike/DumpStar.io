@@ -2,25 +2,53 @@
   height: 10vh;
   width: 10vw;
   filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
-  
 }
 
 .closedFolder {
-  position: absolute;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.folderName {
-  position: absolute;
-  top: 60%;
-  bottom: 0;
-  left: 10px;
-  right: 0;
+.openFolder {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .deleteBtn {
-  position: absolute;
-
+  margin: 0 0;
+  color: red;
 }
+
+.folderItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.folderForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.submitBtn {
+  display: none;
+}
+
+
+
+// .folderName {
+//   position: absolute;
+//   top: 60%;
+//   bottom: 0;
+//   left: 10px;
+//   right: 0;
+// }
+
+// .deleteBtn {
+//   position: absolute;
+
+// }
 
 
 

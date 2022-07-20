@@ -18,7 +18,20 @@ input {
   font-size: 1.2rem;
 }
 
+.btn {
+  font-size: 1.1rem;
+  padding: .7em;
+  color: white;
+  background-color: rgb(62, 62, 62);
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
 
-.modalOuter {
-  
+.btn:hover {
+  background-color: rgb(49, 49, 49);
 }

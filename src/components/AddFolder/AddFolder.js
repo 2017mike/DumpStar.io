@@ -23,39 +23,23 @@ const AddFolder = ({faveState, setFaveState}) => {
    
     const newFolder = {
       name: folderNameState.folderName,
-      items: []
+      items: [],
+      id: Math.floor(Math.random()*100000)
     }
 
-    console.log(newFolder)
-     
-
-    //if faveState is greater than or equal to 1, we can spread the object into the array.
-    // if(faveState.length >=1) {
-    // console.log(faveState)
-    // setFaveState([...faveState, newFolder])
-    // console.log(faveState.length)
-    // localStorage.setItem("myLinks", JSON.stringify(faveState));
-
-    // }
-    // else {
-
-      let newFaveArr = []
-      newFaveArr.push(newFolder)
-      console.log(newFaveArr, 'newFaveArr')
-      localStorage.setItem(
+    let newFaveArr = []
+    newFaveArr.push(newFolder)
+    localStorage.setItem(
         "myLinks",
         JSON.stringify(faveState.concat(newFaveArr))
-      );
-      setFaveState(faveState.concat(newFaveArr))
-      console.log(faveState.length)
-     
-      toggleModal()
-    // }
+    );
+    setFaveState(faveState.concat(newFaveArr))
+    toggleModal()
   }
 
   return (
     <div className="modalOuter">
-      <button onClick={toggleModal}>Add Folder</button>
+      <button className="btn" onClick={toggleModal}>Add Folder</button>
 
       <Modal
         isOpen={isOpen}
@@ -64,8 +48,7 @@ const AddFolder = ({faveState, setFaveState}) => {
         className="modalInner"
         
       >
-    
-        <div>My modal dialog.</div>
+        <div>Name your folder!</div>
         <input
         name="folderName" 
         type="text"

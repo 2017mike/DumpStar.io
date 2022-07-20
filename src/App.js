@@ -36,6 +36,11 @@ function App() {
             <Folder
              key={i}
              name={fave.name}
+             id={fave.id}
+             items={fave.items}
+             faveState={faveState}
+             setFaveState={setFaveState}
+             items={fave.items}
              />
           )
         ) : (
