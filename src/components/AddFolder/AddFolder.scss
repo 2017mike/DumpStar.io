@@ -1,0 +1,24 @@
+@import '../../Styles/Variables.scss';
+
+.modalInner {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  opacity: .75;
+}
+
+input {
+  padding: .5rem;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+}
+
+
+.modalOuter {
+  
+}

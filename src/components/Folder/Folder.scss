@@ -1,0 +1,30 @@
+.svg {
+  height: 10vh;
+  width: 10vw;
+  filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+  
+}
+
+.closedFolder {
+  position: absolute;
+}
+
+.folderName {
+  position: absolute;
+  top: 60%;
+  bottom: 0;
+  left: 10px;
+  right: 0;
+}
+
+.deleteBtn {
+  position: absolute;
+
+}
+
+
+
+
+
+
+
