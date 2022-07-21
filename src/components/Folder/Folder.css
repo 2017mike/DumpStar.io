@@ -1,0 +1,85 @@
+.svg {
+  height: 10vh;
+  width: 10vw;
+  -webkit-filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+          filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+}
+
+.entireFolder {
+  width: 80vw;
+}
+
+.closedFolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.openFolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.newClass {
+  height: 100vh;
+  color: red;
+  background-color: purple;
+}
+
+.deleteBtn {
+  margin: 0 0;
+  color: red;
+}
+
+.folderItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.folderForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.submitBtn {
+  display: none;
+}
+
+.itemsDiv {
+  gap: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(15vw, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
+}
+
+.folder-input {
+  padding: 0rem;
+  border: none;
+  outline: none;
+  font-size: .8rem;
+  height: 2rem;
+}
+
+.folder-input:focus {
+  outline: rgba(240, 46, 170, 0.4) 2px solid;
+  -webkit-box-shadow: rgba(240, 46, 170, 0.4) 2px 2px, rgba(240, 46, 170, 0.3) 5px 5px, rgba(240, 46, 170, 0.2) 8px 8px, rgba(240, 46, 170, 0.2) 11px 11px, rgba(240, 46, 170, 0.1) 14px 14px;
+          box-shadow: rgba(240, 46, 170, 0.4) 2px 2px, rgba(240, 46, 170, 0.3) 5px 5px, rgba(240, 46, 170, 0.2) 8px 8px, rgba(240, 46, 170, 0.2) 11px 11px, rgba(240, 46, 170, 0.1) 14px 14px;
+}
+/*# sourceMappingURL=Folder.css.map */

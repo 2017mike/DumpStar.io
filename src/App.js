@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import AddFolder from './components/AddFolder'
 import Folder from './components/Folder'
 
+import API from './components/API'
 function App() {
   const [faveState, setFaveState] = useState([])
 

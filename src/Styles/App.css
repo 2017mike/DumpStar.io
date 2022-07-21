@@ -1,0 +1,24 @@
+* {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  background-color: #1d1d1d;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.basic-grid {
+  margin-left: 10vw;
+  margin-right: 10vh;
+  display: -ms-grid;
+  display: grid;
+  gap: 2.5rem;
+  -ms-grid-columns: (minmax(15vw, 80vw))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(15vw, 80vw));
+}
+/*# sourceMappingURL=App.css.map */

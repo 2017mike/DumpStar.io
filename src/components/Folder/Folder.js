@@ -6,7 +6,9 @@ import Item from '../Item'
 
 const Folder = ({name, items, id, faveState, setFaveState}) => {
 
-  const [showState, setShowState] = useState(false)
+  const [showState, setShowState] = useState(true)
+
+  const [showFormState, setShowFormState] = useState(false);
   
   const [itemState, setItemState] = useState(items)
 
@@ -38,14 +40,19 @@ const Folder = ({name, items, id, faveState, setFaveState}) => {
     }))
   }
 
+  const handleShowInput = (e) => {
+    e.preventDefault()
+    setShowFormState(!showFormState)
+  }
+
   const handleAddItem = (event) => {
     event.preventDefault()
-
     const newFaves = faveState.map(fave=> {
       if(fave.id === id) {
         const newItem = {
           title: itemInputState.title,
-          link: itemInputState.link
+          link: itemInputState.link,
+          id: Math.floor(Math.random() * 100000)
         }
         fave.items.push(newItem)
         return fave
@@ -65,52 +72,69 @@ const Folder = ({name, items, id, faveState, setFaveState}) => {
   return (
     <>
       {showState ? (
-        <div className="openFolder">
-          <a onClick={handleFolderDelete} className="deleteBtn">
-            x
-          </a>
-          <img
-            onClick={handleOpenFolder}
-            className="svg"
-            src={openFolder}
-            alt="an outline of a folder"
-          ></img>
-          <div className="folderItems">
+        <div className="entireFolderWithContent">
+          <div className="openFolder">
+            <a onClick={handleFolderDelete} className="smallBtn">
+              x
+            </a>
+            <img
+              onClick={handleOpenFolder}
+              className="svg"
+              src={openFolder}
+              alt="an outline of a folder"
+            ></img>
+            {/* <div className="folderItems"> */}
             <p className="folderName">{name}</p>
-            <form className="folderForm" onSubmit={(e)=>handleAddItem(e)} action="">
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="title"
-                placeholder="title"
-              />
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="link"
-                placeholder="link"
-              />
-              <button className="submitBtn">Submit</button>
-            </form>
 
-            {
-              itemState.length >= 1 ? 
-              itemState.map(item=> 
-                <Item
-                title={item.title}
-                link={item.link}
+            {showFormState ? (
+              <form
+                className="folderForm"
+                onSubmit={(e) => handleAddItem(e)}
+                action=""
+              >
+                <span onClick={(e)=>handleShowInput(e)} className="smallBtn">-</span>
+                <input
+                  onChange={handleInputChange}
+                  type="text"
+                  name="title"
+                  placeholder="title"
+                  value={itemInputState.title}
+                  className="folder-input"
                 />
-                )
-                :
-                null
-            }
-            
-           
+                <input
+                  onChange={handleInputChange}
+                  type="text"
+                  name="link"
+                  placeholder="link"
+                  value={itemInputState.link}
+                  className="folder-input"
+                />
+                <button className="submitBtn">Submit</button>
+              </form>
+            ) : (
+              <span className="smallBtn" onClick={handleShowInput}>
+                +
+              </span>
+            )}
+          </div>
+          <div className="itemsDiv">
+            {itemState.length >= 1
+              ? itemState.map((item) => (
+                  <Item
+                    key={item.id}
+                    title={item.title}
+                    link={item.link}
+                    id={item.id}
+                    itemState={itemState}
+                    setItemState={setItemState}
+                  />
+                ))
+              : null}
           </div>
         </div>
       ) : (
         <div className="closedFolder">
-          <a onClick={() => handleFolderDelete(id)} className="deleteBtn">
+          <a onClick={() => handleFolderDelete(id)} className="smallBtn">
             x
           </a>
           <img
