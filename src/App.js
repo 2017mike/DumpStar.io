@@ -1,54 +1,46 @@
-import './Styles/App.scss'
-import { useState, useEffect } from 'react'
-import AddFolder from './components/AddFolder'
-import Folder from './components/Folder'
+import "./Styles/App.scss";
+import { useState, useEffect } from "react";
+import AddFolder from "./components/AddFolder";
+import Folder from "./components/Folder";
 
-import API from './components/API'
 function App() {
-  const [faveState, setFaveState] = useState([])
+  const [faveState, setFaveState] = useState([]);
 
   const handleGetStorage = () => {
-  const localArr = localStorage.getItem('myLinks') || []
+    const localArr = localStorage.getItem("myLinks") || [];
 
-  //if user already has folders in local storage, it will show up as a string. Therefore this statement is handling return users
-  if(typeof(localArr) === 'string') {
-    let parsedArr = JSON.parse(localArr);
-    setFaveState(parsedArr);
-    return
-  }
-  //if it is a user's first time, then localArr will be an empty array. (Refer t
-  //therefore we don't need to do anything because faveState is already an empty array
-  }
-
+    //if user already has folders in local storage, it will show up as a string. Therefore this statement is handling return users
+    if (typeof localArr === "string") {
+      let parsedArr = JSON.parse(localArr);
+      setFaveState(parsedArr);
+    }
+    //if it is a user's first time, then localArr will be an empty array.
+    //therefore we don't need to do anything because faveState is already an empty array
+  };
 
   useEffect(() => {
-    handleGetStorage()
-  }, [])
+    handleGetStorage();
+  }, []);
 
   return (
     <>
       <h1> My Links</h1>
-
       <AddFolder faveState={faveState} setFaveState={setFaveState} />
       <div className="basic-grid">
         {faveState.length >= 1 ? (
-          faveState.map((fave, i)=> 
-         
+          faveState.map((fave, i) => (
             <Folder
-             key={i}
-             name={fave.name}
-             id={fave.id}
-             items={fave.items}
-             faveState={faveState}
-             setFaveState={setFaveState}
-             items={fave.items}
-             />
-          )
+              key={i}
+              name={fave.name}
+              id={fave.id}
+              items={fave.items}
+              faveState={faveState}
+              setFaveState={setFaveState}
+              items={fave.items}
+            />
+          ))
         ) : (
-          <>
-          {console.log(faveState.length)}
-            hello
-          </>
+          <>hello</>
         )}
       </div>
     </>

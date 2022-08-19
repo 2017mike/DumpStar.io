@@ -1,74 +1,74 @@
-import { useState } from 'react'
-import closedFolder from '../../assets/images/folder.svg'
+import { useState } from "react";
+import closedFolder from "../../assets/images/folder.svg";
 import openFolder from "../../assets/images/openFolder.svg";
-import './Folder.scss'
-import Item from '../Item'
+import "./Folder.scss";
+import Item from "../Item";
 
-const Folder = ({name, items, id, faveState, setFaveState}) => {
-
-  const [showState, setShowState] = useState(true)
+const Folder = ({ name, items, id, faveState, setFaveState }) => {
+  const [showState, setShowState] = useState(false);
 
   const [showFormState, setShowFormState] = useState(false);
-  
-  const [itemState, setItemState] = useState(items)
+
+  const [itemState, setItemState] = useState(items);
 
   const [itemInputState, setItemInputState] = useState({
-    title: '',
-    link: ''
+    title: "",
+    link: "",
   });
 
+
+
   const handleOpenFolder = () => {
-    setShowState(!showState)
-  }
+    setShowState(!showState);
+  };
 
   const handleInputChange = ({ target: { name, value } }) => {
     setItemInputState({ ...itemInputState, [name]: value });
   };
 
-
-
-  const handleFolderDelete = async(id) => {
-
+  const handleFolderDelete = async (id) => {
     const newArr = faveState.filter((folder) => {
       return folder.id != id;
     });
 
     localStorage.setItem("myLinks", JSON.stringify(newArr));
-    
-    setFaveState(faveState.filter(folder=> {
-      return folder.id != id
-    }))
-  }
+
+    setFaveState(
+      faveState.filter((folder) => {
+        return folder.id != id;
+      })
+    );
+  };
 
   const handleShowInput = (e) => {
-    e.preventDefault()
-    setShowFormState(!showFormState)
-  }
+    e.preventDefault();
+    setShowFormState(!showFormState);
+  };
 
   const handleAddItem = (event) => {
-    event.preventDefault()
-    const newFaves = faveState.map(fave=> {
-      if(fave.id === id) {
+    event.preventDefault();
+    const newFaves = faveState.map((fave) => {
+      if (fave.id === id) {
         const newItem = {
           title: itemInputState.title,
           link: itemInputState.link,
-          id: Math.floor(Math.random() * 100000)
-        }
-        fave.items.push(newItem)
-        return fave
+          id: Math.floor(Math.random() * 100000),
+        };
+        fave.items.push(newItem);
+        return fave;
       } else {
-        return fave
+        return fave;
       }
-    })
-    localStorage.setItem('myLinks', JSON.stringify(newFaves))
-    setFaveState(newFaves)
+    });
+    localStorage.setItem("myLinks", JSON.stringify(newFaves));
+    setFaveState(newFaves);
 
     setItemInputState({
-      title: '',
-      link: ''
-    })
-  }
-  
+      title: "",
+      link: "",
+    });
+  };
+
   return (
     <>
       {showState ? (
@@ -84,7 +84,7 @@ const Folder = ({name, items, id, faveState, setFaveState}) => {
               alt="an outline of a folder"
             ></img>
             {/* <div className="folderItems"> */}
-            <p className="folderName">{name}</p>
+            <p className="folderNameOpen">{name}</p>
 
             {showFormState ? (
               <form
@@ -92,7 +92,9 @@ const Folder = ({name, items, id, faveState, setFaveState}) => {
                 onSubmit={(e) => handleAddItem(e)}
                 action=""
               >
-                <span onClick={(e)=>handleShowInput(e)} className="smallBtn">-</span>
+                <span onClick={(e) => handleShowInput(e)} className="smallBtn">
+                  -
+                </span>
                 <input
                   onChange={handleInputChange}
                   type="text"
@@ -133,21 +135,23 @@ const Folder = ({name, items, id, faveState, setFaveState}) => {
           </div>
         </div>
       ) : (
-        <div className="closedFolder">
-          <a onClick={() => handleFolderDelete(id)} className="smallBtn">
-            x
-          </a>
-          <img
-            alt="an outline of a folder"
-            onClick={handleOpenFolder}
-            className="svg"
-            src={closedFolder}
-          ></img>
-          <p className="folderName">{name}</p>
+        <div className="entireClosedFolder">
+          <div className="closedFolder">
+            <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+              x
+            </a>
+            <img
+              alt="an outline of a folder"
+              onClick={handleOpenFolder}
+              className="svg"
+              src={closedFolder}
+            ></img>
+            <p className="folderName">{name}</p>
+          </div>
         </div>
       )}
     </>
   );
-}
+};
 
-export default Folder
+export default Folder;

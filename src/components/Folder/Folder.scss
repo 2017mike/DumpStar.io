@@ -2,8 +2,10 @@
 
 .svg {
   height: 10vh;
-  width: 10vw;
+  width: 10vw !important;
   filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .entireFolderWithContent {
@@ -23,7 +25,6 @@
 }
 
 .openFolder {
-
   margin-right: 40vw;
   display: flex;  
   align-items: center;
@@ -108,15 +109,20 @@
 
 
 
-.folderName {
-  position: absolute;
-  top: 23vh;
-}
+// .folderName {
+//   margin-right: 3px;
+// }
+
+
 
 // .deleteBtn {
 //   position: absolute;
 
 // }
+
+.folderNameOpen {
+  margin-right: .4rem;
+}
 
 
 
