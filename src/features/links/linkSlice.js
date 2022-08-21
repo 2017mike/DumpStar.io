@@ -48,6 +48,13 @@ export const linksSlice = createSlice({
 
       state.links = state.links.filter((link) => link.id !== action.payload);
     },
+    addItem: (state, action) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the Immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      state.links[action.payload.index].items.push(action.payload.item);
+    },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
       state.value += action.payload;
@@ -67,7 +74,7 @@ export const linksSlice = createSlice({
   // },
 });
 
-export const { addFolder, removeFolder, incrementByAmount } =
+export const { addFolder, removeFolder, incrementByAmount, addItem } =
   linksSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

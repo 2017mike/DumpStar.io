@@ -6,11 +6,18 @@ import Item from "../Item";
 import { store } from "../../app/store";
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeFolder, selectLinks } from "../../features/links/linkSlice";
+import {
+  removeFolder,
+  selectLinks,
+  addItem,
+} from "../../features/links/linkSlice";
 
-const Folder = ({ name, items, id }) => {
+const Folder = ({ index, name, items, id }) => {
   const links = useSelector(selectLinks);
   const dispatch = useDispatch();
+
+  const newItems = links.links[index].items;
+  console.log(newItems);
 
   const [showState, setShowState] = useState(false);
 
@@ -46,6 +53,22 @@ const Folder = ({ name, items, id }) => {
     event.preventDefault();
     const currentState = store.getState();
     const currentLinks = currentState.links.links;
+    let thisFolder;
+    let thisIndex;
+    currentLinks.forEach((folder, i) => {
+      if (folder.id === id) {
+        thisFolder = { ...folder };
+        thisIndex = i;
+      }
+    });
+    const payload = {
+      index: thisIndex,
+      item: itemInputState,
+    };
+    dispatch(addItem(payload));
+    const newState = store.getState();
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
+
     setItemInputState({
       title: "",
       link: "",
@@ -103,8 +126,8 @@ const Folder = ({ name, items, id }) => {
             )}
           </div>
           <div className="itemsDiv">
-            {itemState.length >= 1
-              ? itemState.map((item) => (
+            {newItems.length >= 1
+              ? newItems.map((item) => (
                   <Item
                     key={item.id}
                     title={item.title}

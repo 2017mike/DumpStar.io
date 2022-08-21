@@ -15,7 +15,13 @@ function App() {
       <div className="basic-grid">
         {links.links.length >= 1 ? (
           links.links.map((link, i) => (
-            <Folder key={i} name={link.name} id={link.id} items={link.items} />
+            <Folder
+              index={i}
+              key={i}
+              name={link.name}
+              id={link.id}
+              items={link.items}
+            />
           ))
         ) : (
           <></>
