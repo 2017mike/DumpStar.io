@@ -3,8 +3,15 @@ import closedFolder from "../../assets/images/folder.svg";
 import openFolder from "../../assets/images/openFolder.svg";
 import "./Folder.scss";
 import Item from "../Item";
+import { store } from "../../app/store";
 
-const Folder = ({ name, items, id, faveState, setFaveState }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { removeFolder, selectLinks } from "../../features/links/linkSlice";
+
+const Folder = ({ name, items, id }) => {
+  const links = useSelector(selectLinks);
+  const dispatch = useDispatch();
+
   const [showState, setShowState] = useState(false);
 
   const [showFormState, setShowFormState] = useState(false);
@@ -16,8 +23,6 @@ const Folder = ({ name, items, id, faveState, setFaveState }) => {
     link: "",
   });
 
-
-
   const handleOpenFolder = () => {
     setShowState(!showState);
   };
@@ -26,18 +31,10 @@ const Folder = ({ name, items, id, faveState, setFaveState }) => {
     setItemInputState({ ...itemInputState, [name]: value });
   };
 
-  const handleFolderDelete = async (id) => {
-    const newArr = faveState.filter((folder) => {
-      return folder.id != id;
-    });
-
-    localStorage.setItem("myLinks", JSON.stringify(newArr));
-
-    setFaveState(
-      faveState.filter((folder) => {
-        return folder.id != id;
-      })
-    );
+  const handleFolderDelete = (id) => {
+    dispatch(removeFolder(id));
+    const newState = store.getState();
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
   };
 
   const handleShowInput = (e) => {
@@ -47,22 +44,8 @@ const Folder = ({ name, items, id, faveState, setFaveState }) => {
 
   const handleAddItem = (event) => {
     event.preventDefault();
-    const newFaves = faveState.map((fave) => {
-      if (fave.id === id) {
-        const newItem = {
-          title: itemInputState.title,
-          link: itemInputState.link,
-          id: Math.floor(Math.random() * 100000),
-        };
-        fave.items.push(newItem);
-        return fave;
-      } else {
-        return fave;
-      }
-    });
-    localStorage.setItem("myLinks", JSON.stringify(newFaves));
-    setFaveState(newFaves);
-
+    const currentState = store.getState();
+    const currentLinks = currentState.links.links;
     setItemInputState({
       title: "",
       link: "",
@@ -74,7 +57,7 @@ const Folder = ({ name, items, id, faveState, setFaveState }) => {
       {showState ? (
         <div className="entireFolderWithContent">
           <div className="openFolder">
-            <a onClick={handleFolderDelete} className="smallBtn">
+            <a onClick={() => handleFolderDelete(id)} className="smallBtn">
               x
             </a>
             <img

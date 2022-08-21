@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import "./AddFolder.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { addFolder, selectLinks } from "../../features/links/linkSlice";
+import { store } from "../../app/store";
 
 Modal.setAppElement("#root");
 
 const AddFolder = ({ faveState, setFaveState }) => {
+  const dispatch = useDispatch();
+  const links = useSelector(selectLinks);
+
   const [isOpen, setIsOpen] = useState(false);
   const [folderNameState, setFolderNameState] = useState({
     folderName: "",
@@ -25,13 +31,10 @@ const AddFolder = ({ faveState, setFaveState }) => {
       id: Math.floor(Math.random() * 100000),
     };
 
-    let newFaveArr = [];
-    newFaveArr.push(newFolder);
-    localStorage.setItem(
-      "myLinks",
-      JSON.stringify(faveState.concat(newFaveArr))
-    );
-    setFaveState(faveState.concat(newFaveArr));
+    dispatch(addFolder(newFolder));
+    const newState = store.getState();
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
+
     toggleModal();
   };
 
