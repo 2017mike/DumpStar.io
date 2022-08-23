@@ -16,6 +16,7 @@ function App() {
         {links.links.length >= 1 ? (
           links.links.map((link, i) => (
             <Folder
+              isOpen={link.isOpen}
               index={i}
               key={i}
               name={link.name}

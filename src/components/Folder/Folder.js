@@ -1,6 +1,6 @@
 import { useState } from "react";
 import closedFolder from "../../assets/images/folder.svg";
-import openFolder from "../../assets/images/openFolder.svg";
+import openFolderSvg from "../../assets/images/openFolder.svg";
 import "./Folder.scss";
 import Item from "../Item";
 import { store } from "../../app/store";
@@ -10,9 +10,10 @@ import {
   removeFolder,
   selectLinks,
   addItem,
+  openFolder,
 } from "../../features/links/linkSlice";
 
-const Folder = ({ index, name, items, id }) => {
+const Folder = ({ index, name, items, id, isOpen }) => {
   const links = useSelector(selectLinks);
   const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ const Folder = ({ index, name, items, id }) => {
 
   const [showState, setShowState] = useState(false);
 
-  const [showFormState, setShowFormState] = useState(false);
+  const [showFormState, setShowFormState] = useState(true);
 
   const [itemState, setItemState] = useState(items);
 
@@ -30,7 +31,14 @@ const Folder = ({ index, name, items, id }) => {
   });
 
   const handleOpenFolder = () => {
-    setShowState(!showState);
+    dispatch(
+      openFolder({
+        index,
+        isOpen,
+      })
+    );
+    const newState = store.getState();
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
   };
 
   const handleInputChange = ({ target: { name, value } }) => {
@@ -82,21 +90,21 @@ const Folder = ({ index, name, items, id }) => {
 
   return (
     <>
-      {showState ? (
+      {isOpen ? (
         <div className="entireFolderWithContent">
           <div className="openFolder">
             <div className="buttonNextToFolderDiv">
-              <a onClick={() => handleFolderDelete(id)} className="smallBtn">
-                x
-              </a>
               <a onClick={() => handleOpenAll()} className="smallBtn">
                 a
+              </a>
+              <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                x
               </a>
             </div>
             <img
               onClick={handleOpenFolder}
               className="svg"
-              src={openFolder}
+              src={openFolderSvg}
               alt="an outline of a folder"
             ></img>
             {/* <div className="folderItems"> */}
@@ -156,9 +164,14 @@ const Folder = ({ index, name, items, id }) => {
       ) : (
         <div className="entireClosedFolder">
           <div className="closedFolder">
-            <a onClick={() => handleFolderDelete(id)} className="smallBtn">
-              x
-            </a>
+            <div className="buttonNextToFolderDiv">
+              <a onClick={() => handleOpenAll()} className="smallBtn">
+                a
+              </a>
+              <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                x
+              </a>
+            </div>
             <img
               alt="an outline of a folder"
               onClick={handleOpenFolder}

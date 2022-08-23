@@ -29,6 +29,7 @@ const AddFolder = ({ faveState, setFaveState }) => {
       name: folderNameState.folderName,
       items: [],
       id: Math.floor(Math.random() * 100000),
+      isOpen: true,
     };
 
     dispatch(addFolder(newFolder));

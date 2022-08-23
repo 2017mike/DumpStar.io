@@ -60,9 +60,9 @@ export const linksSlice = createSlice({
         action.payload.folderIndex
       ].items.filter((item, i) => i !== action.payload.itemIndex);
     },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    openFolder: (state, action) => {
+      state.links[action.payload.index].isOpen =
+        !state.links[action.payload.index].isOpen;
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -85,6 +85,7 @@ export const {
   incrementByAmount,
   addItem,
   removeItem,
+  openFolder,
 } = linksSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
