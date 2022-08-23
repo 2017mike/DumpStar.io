@@ -55,6 +55,11 @@ export const linksSlice = createSlice({
       // immutable state based off those changes
       state.links[action.payload.index].items.push(action.payload.item);
     },
+    removeItem: (state, action) => {
+      state.links[action.payload.folderIndex].items = state.links[
+        action.payload.folderIndex
+      ].items.filter((item, i) => i !== action.payload.itemIndex);
+    },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
       state.value += action.payload;
@@ -74,8 +79,13 @@ export const linksSlice = createSlice({
   // },
 });
 
-export const { addFolder, removeFolder, incrementByAmount, addItem } =
-  linksSlice.actions;
+export const {
+  addFolder,
+  removeFolder,
+  incrementByAmount,
+  addItem,
+  removeItem,
+} = linksSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

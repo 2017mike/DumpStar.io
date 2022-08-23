@@ -17,7 +17,6 @@ const Folder = ({ index, name, items, id }) => {
   const dispatch = useDispatch();
 
   const newItems = links.links[index].items;
-  console.log(newItems);
 
   const [showState, setShowState] = useState(false);
 
@@ -75,14 +74,25 @@ const Folder = ({ index, name, items, id }) => {
     });
   };
 
+  const handleOpenAll = () => {
+    newItems.forEach((item) => {
+      window.open(item.link, "_blank");
+    });
+  };
+
   return (
     <>
       {showState ? (
         <div className="entireFolderWithContent">
           <div className="openFolder">
-            <a onClick={() => handleFolderDelete(id)} className="smallBtn">
-              x
-            </a>
+            <div className="buttonNextToFolderDiv">
+              <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                x
+              </a>
+              <a onClick={() => handleOpenAll()} className="smallBtn">
+                a
+              </a>
+            </div>
             <img
               onClick={handleOpenFolder}
               className="svg"
@@ -127,9 +137,12 @@ const Folder = ({ index, name, items, id }) => {
           </div>
           <div className="itemsDiv">
             {newItems.length >= 1
-              ? newItems.map((item) => (
+              ? newItems.map((item, i) => (
                   <Item
+                    itemIndex={i}
                     key={item.id}
+                    folderIndex={index}
+                    //index is referring to the index of the folder
                     title={item.title}
                     link={item.link}
                     id={item.id}

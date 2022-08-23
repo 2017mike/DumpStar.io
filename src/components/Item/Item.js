@@ -1,13 +1,35 @@
 import React from "react";
 import "./Item.scss";
+import { store } from "../../app/store";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeFolder,
+  selectLinks,
+  addItem,
+  removeItem,
+} from "../../features/links/linkSlice";
 //
-const Item = ({ title, link, id, itemState, setItemState }) => {
+const Item = ({ folderIndex, title, link, id, itemIndex }) => {
   const handleGoToLink = () => {
     window.open(link, "_blank");
   };
 
-  const handleDeleteItem = (id) => {};
+  const dispatch = useDispatch();
+
+  const handleDeleteItem = (event) => {
+    event.stopPropagation();
+    dispatch(
+      removeItem({
+        folderIndex,
+        itemIndex,
+      })
+    );
+    const newState = store.getState();
+    console.log(newState);
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
+  };
+
   return (
     <>
       <div onClick={handleGoToLink} className="item">

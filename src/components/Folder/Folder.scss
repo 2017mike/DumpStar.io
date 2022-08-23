@@ -83,9 +83,6 @@
   box-shadow: $box-shadow-1 2px 2px, $box-shadow-2 5px 5px, $box-shadow-3 8px 8px, $box-shadow-3 11px 11px, $box-shadow-4 14px 14px;
 }
 
-.closeInputBtn {
-
-}
 
 .smallBtn:hover {
   background-color: rgb(49, 49, 49);
@@ -106,6 +103,10 @@
   -o-border-radius: .1rem;
 }
 
+.buttonNextToFolderDiv {
+  display: flex;
+  flex-direction: column;
+}
 
 
 
@@ -126,9 +127,12 @@
   margin-right: .6rem;
 }
 
-
-
-
-
+@media (max-width: 800px) {
+  .itemsDiv {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+}
 
 
