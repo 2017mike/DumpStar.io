@@ -9,7 +9,7 @@
   color: $text-color;
   background-color: $card-background;
   padding: .4rem .6rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -32,7 +32,6 @@
 
 .btn-delete-item {
   overflow: visible;
-  
   padding: .5em;
   color: white;
   background-color: rgb(62, 62, 62);
@@ -61,5 +60,17 @@
   -moz-border-radius: .1rem;
   -ms-border-radius: .1rem;
   -o-border-radius: .1rem;
+}
+
+@media (max-width: 800px) {
+  .item{
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .item{
+    max-width: 100%;
+  }
 }
 

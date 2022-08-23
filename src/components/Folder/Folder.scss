@@ -54,7 +54,6 @@
 .folderForm {
   display: flex;
   gap: 1rem;
-  
 }
 
 .submitBtn {
@@ -128,6 +127,27 @@
 
 // }
 
+.deleteBtn:hover {
+  background-color: $delete-btn-hover;
+}
+
+.deleteBtn {
+  overflow: visible;
+  
+  padding: .5em;
+  color: white;
+  background-color: $delete-btn;
+  border: none;
+  cursor: pointer;
+  border-radius: .1rem;
+  -webkit-border-radius: .1rem;
+  -moz-border-radius: .1rem;
+  -ms-border-radius: .1rem;
+  -o-border-radius: .1rem;
+}
+
+
+
 .folderNameOpen {
   margin-right: .6rem;
 }
@@ -138,6 +158,44 @@
   display: flex;
   flex-direction: column;
 }
+}
+
+@media (max-width: 700px) {
+ .svg {
+    width: 20vw !important;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .folderForm {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+ 
+  .folder-input {
+    width: 40vw;
+  }
+  
+  .titleInputMobile {
+    margin-left: 1rem;
+  }
+  .itemsDiv {
+    margin-top: 15px;
+  }
+  .addItemBtn, .formMinusBtn {
+    margin-left: 1rem;
+  }
+
+  .linkInputMobile {
+    margin-left: 57px;
+  }
+
+}
+
+@media(max-width: 500px) {
+   .folder-input {
+    width: 60vw;
+  }
 }
 
 
