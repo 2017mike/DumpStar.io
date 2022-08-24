@@ -24,7 +24,8 @@ const AddFolder = ({ faveState, setFaveState }) => {
     setFolderNameState({ ...folderNameState, [name]: value });
   };
 
-  const handleAddFolder = () => {
+  const handleAddFolder = (event) => {
+    event.preventDefault();
     const newFolder = {
       name: folderNameState.folderName,
       items: [],
@@ -52,8 +53,13 @@ const AddFolder = ({ faveState, setFaveState }) => {
         className="modalInner"
       >
         <div>Name your folder!</div>
-        <input name="folderName" type="text" onChange={handleInputChange} />
-        <button onClick={handleAddFolder}>Add Folder</button>
+        <form action="" class="formFlex" onSubmit={handleAddFolder}>
+          <input name="folderName" type="text" onChange={handleInputChange} />
+          <br />
+          <button className="btn" type="submit">
+            Add Folder
+          </button>
+        </form>
       </Modal>
     </div>
   );
