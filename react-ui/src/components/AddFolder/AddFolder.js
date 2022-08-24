@@ -51,9 +51,15 @@ const AddFolder = ({ faveState, setFaveState }) => {
         onRequestClose={toggleModal}
         contentLabel="My dialog"
         className="modalInner"
+        style={{
+          overlay: {
+            backgroundColor: "rgb(29, 29, 29)",
+            opacity: ".95",
+          },
+        }}
       >
         <div>Name your folder!</div>
-        <form action="" class="formFlex" onSubmit={handleAddFolder}>
+        <form action="" className="formFlex" onSubmit={handleAddFolder}>
           <input name="folderName" type="text" onChange={handleInputChange} />
           <br />
           <button className="btn" type="submit">
