@@ -13,6 +13,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
   border-radius: .25rem;
   -webkit-border-radius: .25rem;
   -moz-border-radius: .25rem;
@@ -31,6 +32,8 @@
 }
 
 .btn-delete-item {
+  position: absolute;
+  right: 1vw;
   overflow: visible;
   padding: .5em;
   color: white;
@@ -62,7 +65,13 @@
   -o-border-radius: .1rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+  .item{
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 850px) {
   .item{
     max-width: 70%;
   }

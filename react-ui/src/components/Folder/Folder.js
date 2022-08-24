@@ -97,9 +97,12 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  a
+                  💥
                 </a>
-                <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                <a
+                  onClick={() => handleFolderDelete(id)}
+                  className="smallBtn delBtn"
+                >
                   x
                 </a>
               </div>
@@ -171,9 +174,12 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  a
+                  💥
                 </a>
-                <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                <a
+                  onClick={() => handleFolderDelete(id)}
+                  className="smallBtn delBtn"
+                >
                   x
                 </a>
               </div>
@@ -194,9 +200,12 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  a
+                  💥
                 </a>
-                <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                <a
+                  onClick={() => handleFolderDelete(id)}
+                  className="smallBtn delBtn"
+                >
                   x
                 </a>
               </div>
@@ -272,9 +281,12 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  a
+                  💥
                 </a>
-                <a onClick={() => handleFolderDelete(id)} className="smallBtn">
+                <a
+                  onClick={() => handleFolderDelete(id)}
+                  className="smallBtn delBtn"
+                >
                   x
                 </a>
               </div>
