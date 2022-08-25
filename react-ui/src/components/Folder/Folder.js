@@ -20,8 +20,6 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   const newItems = links.links[index].items;
 
-  const [showState, setShowState] = useState(false);
-
   const [showFormState, setShowFormState] = useState(true);
 
   const [itemState, setItemState] = useState(items);
@@ -97,7 +95,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  💥
+                  ⚡️
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}
@@ -174,7 +172,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  💥
+                  ⚡️
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}
@@ -200,7 +198,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  💥
+                  ⚡️
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}
@@ -281,7 +279,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  💥
+                  ⚡️
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}

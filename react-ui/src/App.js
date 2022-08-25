@@ -1,5 +1,5 @@
 import "./Styles/App.scss";
-import React from "react";
+import { useEffect } from "react";
 import AddFolder from "./components/AddFolder";
 import Folder from "./components/Folder";
 import Navbar from "./components/Navbar";
@@ -8,6 +8,10 @@ import { selectLinks } from "./features/links/linkSlice";
 
 function App() {
   const links = useSelector(selectLinks);
+
+  useEffect(() => {
+    document.title = "My Links";
+  }, []);
 
   return (
     <>

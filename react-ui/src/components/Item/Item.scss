@@ -7,7 +7,7 @@
   align-items: center;
   height: 5vh;
   color: $text-color;
-  background-color: $card-background;
+  background-color: $item-background;
   padding: .4rem .6rem;
   font-size: 1.2rem;
   text-overflow: ellipsis;
@@ -23,7 +23,7 @@
  }
 
  .item:hover {
-  background-color: rgb(42, 42, 42);
+  background-color: $item-hover;
   transform: translateY(-2px);
 }
 
@@ -36,7 +36,7 @@
   right: 1vw;
   overflow: visible;
   padding: .5em;
-  color: white;
+  color: $text-color;
   background-color: rgb(62, 62, 62);
   border: none;
   cursor: pointer;
@@ -54,7 +54,7 @@
 .btn-add-item {
   overflow: visible;
   padding: .5em;
-  color: white;
+  color: $text-color;
   background-color: rgb(62, 62, 62);
   border: none;
   cursor: pointer;

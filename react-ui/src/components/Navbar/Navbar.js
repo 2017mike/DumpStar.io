@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Navbar.scss";
 import Modal from "react-modal";
-import { bubble as Menu } from "react-burger-menu";
 
 Modal.setAppElement("#root");
 

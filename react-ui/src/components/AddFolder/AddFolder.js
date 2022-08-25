@@ -60,7 +60,12 @@ const AddFolder = ({ faveState, setFaveState }) => {
       >
         <div>Name your folder!</div>
         <form action="" className="formFlex" onSubmit={handleAddFolder}>
-          <input name="folderName" type="text" onChange={handleInputChange} />
+          <input
+            name="folderName"
+            type="text"
+            onChange={handleInputChange}
+            autoFocus
+          />
           <br />
           <button className="btn" type="submit">
             Add Folder

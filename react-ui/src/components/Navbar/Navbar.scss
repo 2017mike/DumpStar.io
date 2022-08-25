@@ -1,7 +1,7 @@
  @import '../../Styles/Variables.scss';
 
 .fullNav {
-  background-color: $card-background;
+  background-color: $item-background;
   height: 10vh;
   margin-top: 0;
   margin-bottom: 2vh;
@@ -17,6 +17,7 @@
 
 .about {
   margin-right: 2vw;
+  cursor: pointer;
 }
 
 .modalInnerAbout {
@@ -30,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: white solid 2px;
+  border: $folder-outline solid 4px;
   border-color: none;
   outline: none;
   padding: 2rem;
