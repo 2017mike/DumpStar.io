@@ -1,16 +1,17 @@
 import "./Styles/App.scss";
-import { useState, useEffect } from "react";
+import React from "react";
 import AddFolder from "./components/AddFolder";
 import Folder from "./components/Folder";
-import { useSelector, useDispatch } from "react-redux";
-import { addFolder, selectLinks } from "./features/links/linkSlice";
+import Navbar from "./components/Navbar";
+import { useSelector } from "react-redux";
+import { selectLinks } from "./features/links/linkSlice";
 
 function App() {
   const links = useSelector(selectLinks);
 
   return (
     <>
-      <h1> My Links</h1>
+      <Navbar />
       <AddFolder />
       <div className="basic-grid">
         {links.links.length >= 1 ? (
