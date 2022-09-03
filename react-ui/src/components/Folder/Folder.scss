@@ -10,6 +10,11 @@
   -webkit-filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(1884%) hue-rotate(300deg) brightness(107%) contrast(87%);
 }
 
+.lightning {
+  color: $folder-outline !important;
+}
+
+
 .entireFolderWithContent {
   width: 80vw;
   grid-column: 1 / all;
@@ -35,16 +40,9 @@
   margin-bottom: 1rem;
 }
 
-.newClass{
-  height: 100vh;
-  color: red;
-  background-color: purple;
-}
 
-.deleteBtn {
-  margin: 0 0;
-  color: red;
-}
+
+
 
 .folderItems {
   display: flex;
@@ -62,6 +60,7 @@
 }
 
 .itemsDiv {
+  margin-top: 2rem;
   margin-left: 3.5rem;
   gap: 2rem;
   display: grid;
@@ -113,27 +112,10 @@
 .delBtn {
   display: flex;
   justify-content: center;
-  background-color: $delete-btn;
+  color: $text-color;
 }
 
-.deleteBtn:hover {
-  background-color: $delete-btn-hover;
-}
 
-.deleteBtn {
-  overflow: visible;
-  
-  padding: .5em;
-  color: white;
-  background-color: $delete-btn;
-  border: none;
-  cursor: pointer;
-  border-radius: .1rem;
-  -webkit-border-radius: .1rem;
-  -moz-border-radius: .1rem;
-  -ms-border-radius: .1rem;
-  -o-border-radius: .1rem;
-}
 
 
 
@@ -143,6 +125,7 @@
 
 @media (max-width: 850px) {
   .itemsDiv {
+  margin-top: 1.5rem;
   gap: 2rem;
   display: flex;
   flex-direction: column;
@@ -150,7 +133,7 @@
 }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
  .svg {
     width: 20vw !important;
     margin-left: 1rem;
@@ -159,9 +142,11 @@
   .folderForm {
     flex-direction: column;
     align-items: flex-start;
-    height: 15vh;
+    height: 12vh;
     margin-left: 2rem;
     flex-wrap: nowrap;
+    margin-bottom: 1vh;
+    gap: 1rem;
   }
  
   .folder-input {
@@ -172,8 +157,16 @@
     margin-left: 1rem;
   }
 
-  .addItemBtn, .formMinusBtn {
+  .addItemBtn {
+    position: relative;
+    top: 6px;
+    margin-top: 1rem;
+    margin-left: 3rem;
+  }
+
+  .formMinusBtn {
     margin-left: 1rem;
+
   }
 
   .linkInputMobile {

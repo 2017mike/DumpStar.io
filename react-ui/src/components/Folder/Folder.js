@@ -4,6 +4,7 @@ import openFolderSvg from "../../assets/images/openFolder.svg";
 import "./Folder.scss";
 import Item from "../Item";
 import { store } from "../../app/store";
+import LightningSvg from "../../assets/images/lightning.svg";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -89,12 +90,15 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   return (
     <>
-      <MediaQuery minWidth={700}>
+      <MediaQuery minWidth={800}>
         {isOpen ? (
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
-                <a onClick={() => handleOpenAll()} className="smallBtn">
+                <a
+                  onClick={() => handleOpenAll()}
+                  className="smallBtn lightning"
+                >
                   ⚡️
                 </a>
                 <a
@@ -192,13 +196,13 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           </div>
         )}
       </MediaQuery>
-      <MediaQuery maxWidth={699}>
+      <MediaQuery maxWidth={800}>
         {isOpen ? (
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  ⚡️
+                  <img src="../" alt="" />
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}
