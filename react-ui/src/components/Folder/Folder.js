@@ -4,7 +4,6 @@ import openFolderSvg from "../../assets/images/openFolder.svg";
 import "./Folder.scss";
 import Item from "../Item";
 import { store } from "../../app/store";
-import LightningSvg from "../../assets/images/lightning.svg";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -62,11 +61,9 @@ const Folder = ({ index, name, items, id, isOpen }) => {
     // event.preventDefault();
     const currentState = store.getState();
     const currentLinks = currentState.links.links;
-    let thisFolder;
     let thisIndex;
     currentLinks.forEach((folder, i) => {
       if (folder.id === id) {
-        thisFolder = { ...folder };
         thisIndex = i;
       }
     });
@@ -162,10 +159,10 @@ const Folder = ({ index, name, items, id, isOpen }) => {
               )}
             </div>
             <div className="itemsDiv">
-              {newItems.length >= 1
+              {newItems.length
                 ? newItems.map((item, i) => (
                     <Item
-                      key={item.id}
+                      key={i}
                       itemIndex={i}
                       folderIndex={index}
                       //index is referring to the index of the folder
@@ -268,13 +265,12 @@ const Folder = ({ index, name, items, id, isOpen }) => {
             )}
 
             <div className="itemsDiv">
-              {newItems.length >= 1
+              {newItems.length
                 ? newItems.map((item, i) => (
                     <Item
-                      key={item.id}
+                      key={i}
                       itemIndex={i}
                       folderIndex={index}
-                      //index is referring to the index of the folder
                       title={item.title}
                       link={item.link}
                       id={item.id}

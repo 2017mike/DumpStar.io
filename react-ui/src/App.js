@@ -11,7 +11,7 @@ function App() {
   const links = useSelector(selectLinks);
 
   useEffect(() => {
-    document.title = "My Links";
+    document.title = "DumpStar.io";
   }, []);
 
   return (

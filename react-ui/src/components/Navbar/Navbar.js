@@ -31,8 +31,8 @@ const Navbar = () => {
         }}
       >
         <p>
-          MyLinks is a website where you can store links to all your favorite
-          websites in folders.
+          DumpStar.io is a website where you can store links to all your
+          favorite websites in folders.
         </p>
         <p>
           It uses your browser's local storage so there's no need to make an
