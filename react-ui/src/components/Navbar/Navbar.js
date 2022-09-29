@@ -12,7 +12,7 @@ const Navbar = () => {
   };
   return (
     <nav className="fullNav">
-      <h1 className="header"> My Links</h1>
+      <h1 className="header"> DumpStar</h1>
       <span className="about" onClick={toggleModal}>
         About
       </span>

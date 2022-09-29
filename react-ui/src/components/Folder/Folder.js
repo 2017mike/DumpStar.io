@@ -90,7 +90,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   return (
     <>
-      <MediaQuery minWidth={800}>
+      <MediaQuery minWidth={801}>
         {isOpen ? (
           <div className="entireFolderWithContent">
             <div className="openFolder">
@@ -196,13 +196,14 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           </div>
         )}
       </MediaQuery>
+
       <MediaQuery maxWidth={800}>
         {isOpen ? (
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
                 <a onClick={() => handleOpenAll()} className="smallBtn">
-                  <img src="../" alt="" />
+                  ⚡️
                 </a>
                 <a
                   onClick={() => handleFolderDelete(id)}
