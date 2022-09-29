@@ -34,6 +34,7 @@ const Item = ({ folderIndex, title, link, id, itemIndex }) => {
     <>
       <div onClick={handleGoToLink} className="item">
         <p>{title}</p>
+
         <button onClick={handleDeleteItem} className="btn-delete-item">
           x
         </button>

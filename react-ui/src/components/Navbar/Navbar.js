@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Navbar.scss";
 import Modal from "react-modal";
+import Logo from "../../assets/images/dumpstar.png";
 
 Modal.setAppElement("#root");
 
@@ -12,7 +13,8 @@ const Navbar = () => {
   };
   return (
     <nav className="fullNav">
-      <h1 className="header"> DumpStar</h1>
+      <img className="logo" src={Logo} alt="DumpStar.io Logo" />
+
       <span className="about" onClick={toggleModal}>
         About
       </span>
@@ -32,15 +34,15 @@ const Navbar = () => {
       >
         <p>
           DumpStar.io is a website where you can store links to all your
-          favorite websites in folders.
+          favorite websites in folders 🤩🤩
         </p>
         <p>
           It uses your browser's local storage so there's no need to make an
           account or sign in.
         </p>
         <p>
-          The button above the red 'x' next to each folder opens all of the
-          links within that folder at the same time. Try it out!
+          The lightning bolt button next to each folder opens all of the links
+          within that folder at the same time. Try it out!
         </p>
         <p className="boldSpan">
           Note: you may need to allow pop-ups for this site for this feature to

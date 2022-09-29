@@ -8,6 +8,7 @@ import { selectLinks } from "./features/links/linkSlice";
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { store } from "./app/store";
+import GetStarted from "./components/GetStarted";
 
 import { reArrangeFolders } from "./features/links/linkSlice";
 
@@ -44,7 +45,7 @@ function App() {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {links.links
+                {links.links.length > 0
                   ? links.links.map((link, i) => (
                       <Draggable
                         key={link.id.toString()}
@@ -78,6 +79,8 @@ function App() {
           }}
         </Droppable>
       </DragDropContext>
+      {/* placing this conditional render outside of the earlier one due to html structure. We don't want the GetStarted component inside of our <ul></ul> */}
+      {links.links.length <= 0 ? <GetStarted></GetStarted> : null}
     </>
   );
 }

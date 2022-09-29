@@ -1,6 +1,17 @@
- @import '../../Styles/Variables.scss';
- 
- .item {
+@import "../../Styles/Variables.scss";
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 3px;
+  }
+}
+
+.item {
+  animation: MoveUpDown 2.5s linear infinite;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -8,21 +19,23 @@
   height: 5vh;
   color: $text-color;
   background-color: $item-background;
-  padding: .4rem .6rem;
+  padding: 0.4rem 0.6rem;
   font-size: 1.2rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  border-radius: .25rem;
-  -webkit-border-radius: .25rem;
-  -moz-border-radius: .25rem;
-  -ms-border-radius: .25rem;
-  -o-border-radius: .25rem;
-  box-shadow: $box-shadow-1 5px 5px, $box-shadow-2 10px 10px, $box-shadow-3 15px 15px, $box-shadow-4 20px 20px, $box-shadow-5 25px 25px;
- }
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  box-shadow: $box-shadow-1 5px 5px, $box-shadow-2 10px 10px,
+    $box-shadow-3 15px 15px, $box-shadow-4 20px 20px, $box-shadow-5 25px 25px;
+  -webkit-animation: MoveUpDown 2.5s linear infinite;
+}
 
- .item:hover {
+.item:hover {
   background-color: $item-hover;
   transform: translateY(-2px);
   outline: $item-outline 1px solid;
@@ -36,16 +49,16 @@
   position: absolute;
   right: 1vw;
   overflow: visible;
-  padding: .5em;
+  padding: 0.5em;
   color: $text-color;
   background-color: rgb(62, 62, 62);
   border: none;
   cursor: pointer;
-  border-radius: .1rem;
-  -webkit-border-radius: .1rem;
-  -moz-border-radius: .1rem;
-  -ms-border-radius: .1rem;
-  -o-border-radius: .1rem;
+  border-radius: 0.1rem;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  -ms-border-radius: 0.1rem;
+  -o-border-radius: 0.1rem;
 }
 
 .btn-add-item:hover {
@@ -54,33 +67,32 @@
 
 .btn-add-item {
   overflow: visible;
-  padding: .5em;
+  padding: 0.5em;
   color: $text-color;
   background-color: rgb(62, 62, 62);
   border: none;
   cursor: pointer;
-  border-radius: .1rem;
-  -webkit-border-radius: .1rem;
-  -moz-border-radius: .1rem;
-  -ms-border-radius: .1rem;
-  -o-border-radius: .1rem;
+  border-radius: 0.1rem;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  -ms-border-radius: 0.1rem;
+  -o-border-radius: 0.1rem;
 }
 
 @media (max-width: 1000px) {
-  .item{
+  .item {
     font-size: 1rem;
   }
 }
 
 @media (max-width: 850px) {
-  .item{
+  .item {
     max-width: 70%;
   }
 }
 
 @media (max-width: 500px) {
-  .item{
+  .item {
     max-width: 100%;
   }
 }
-
