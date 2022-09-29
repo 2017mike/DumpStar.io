@@ -24,3 +24,13 @@ a {
   flex-direction: column;
   margin-bottom: 5vh;
 }
+
+li {
+  list-style: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .basic-grid {
+    margin-left: 0vw;
+  }
+}

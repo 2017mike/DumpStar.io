@@ -3,35 +3,78 @@ import { useEffect } from "react";
 import AddFolder from "./components/AddFolder";
 import Folder from "./components/Folder";
 import Navbar from "./components/Navbar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectLinks } from "./features/links/linkSlice";
 import React from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+import { reArrangeFolders } from "./features/links/linkSlice";
 
 function App() {
   const links = useSelector(selectLinks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = "DumpStar.io";
   }, []);
 
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+    dispatch(
+      reArrangeFolders({
+        index: result.source.index,
+        destination: result.destination.index,
+      })
+    );
+  };
+
   return (
     <>
       <Navbar />
       <AddFolder />
-      <div className="basic-grid">
-        {links.links
-          ? links.links.map((link, i) => (
-              <Folder
-                isOpen={link.isOpen}
-                index={i}
-                key={link.id}
-                name={link.name}
-                id={link.id}
-                items={link.items}
-              />
-            ))
-          : null}
-      </div>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="folders">
+          {(provided) => {
+            return (
+              <ul
+                className="basic-grid"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {links.links
+                  ? links.links.map((link, i) => (
+                      <Draggable
+                        key={link.id.toString()}
+                        draggableId={link.id.toString()}
+                        index={i}
+                      >
+                        {(provided) => {
+                          return (
+                            <li
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              className="folderLi"
+                            >
+                              <Folder
+                                isOpen={link.isOpen}
+                                index={i}
+                                name={link.name}
+                                id={link.id}
+                                items={link.items}
+                              />
+                            </li>
+                          );
+                        }}
+                      </Draggable>
+                    ))
+                  : null}
+                {provided.placeholder}
+              </ul>
+            );
+          }}
+        </Droppable>
+      </DragDropContext>
     </>
   );
 }
