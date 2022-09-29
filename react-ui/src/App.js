@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectLinks } from "./features/links/linkSlice";
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { store } from "./app/store";
 
 import { reArrangeFolders } from "./features/links/linkSlice";
 
@@ -26,6 +27,8 @@ function App() {
         destination: result.destination.index,
       })
     );
+    const newState = store.getState();
+    localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
   };
 
   return (
