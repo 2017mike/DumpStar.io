@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import closedFolder from "../../assets/images/folder.svg";
 import openFolderSvg from "../../assets/images/openFolder.svg";
 import "./Folder.scss";
@@ -20,6 +20,8 @@ const Folder = ({ index, name, items, id, isOpen }) => {
   const dispatch = useDispatch();
 
   const newItems = links.links[index].items;
+
+  const formRef = useRef(null);
 
   const [showFormState, setShowFormState] = useState(true);
 
@@ -57,7 +59,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
   };
 
   const handleAddItem = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const currentState = store.getState();
     const currentLinks = currentState.links.links;
     let thisFolder;
@@ -88,6 +90,14 @@ const Folder = ({ index, name, items, id, isOpen }) => {
     });
   };
 
+  const handleKeyDown = (ev) => {
+    if (ev.keyCode === 13) {
+      // enter button
+      ev.preventDefault();
+      handleAddItem(ev);
+    }
+  };
+
   return (
     <>
       <MediaQuery minWidth={801}>
@@ -95,18 +105,18 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
-                <a
+                <button
                   onClick={() => handleOpenAll()}
                   className="smallBtn lightning"
                 >
                   ⚡️
-                </a>
-                <a
+                </button>
+                <button
                   onClick={() => handleFolderDelete(id)}
                   className="smallBtn delBtn"
                 >
                   x
-                </a>
+                </button>
               </div>
               <img
                 onClick={handleOpenFolder}
@@ -118,35 +128,33 @@ const Folder = ({ index, name, items, id, isOpen }) => {
               <p className="folderNameOpen">{name}</p>
 
               {showFormState ? (
-                <form
-                  className="folderForm"
-                  onSubmit={(e) => handleAddItem(e)}
-                  action=""
-                >
-                  <span
-                    onClick={(e) => handleShowInput(e)}
-                    className="smallBtn"
-                  >
-                    -
-                  </span>
-                  <input
-                    onChange={handleInputChange}
-                    type="text"
-                    name="title"
-                    placeholder="title"
-                    value={itemInputState.title}
-                    className="folder-input"
-                  />
-                  <input
-                    onChange={handleInputChange}
-                    type="text"
-                    name="link"
-                    placeholder="link"
-                    value={itemInputState.link}
-                    className="folder-input"
-                  />
-                  <button className="submitBtn">Submit</button>
-                </form>
+                <div onKeyDown={handleKeyDown}>
+                  <form ref={formRef} className="folderForm" action="">
+                    <span
+                      onClick={(e) => handleShowInput(e)}
+                      className="smallBtn"
+                    >
+                      -
+                    </span>
+                    <input
+                      onChange={handleInputChange}
+                      type="text"
+                      name="title"
+                      placeholder="title"
+                      value={itemInputState.title}
+                      className="folder-input"
+                    />
+                    <input
+                      onChange={handleInputChange}
+                      type="text"
+                      name="link"
+                      placeholder="link"
+                      value={itemInputState.link}
+                      className="folder-input"
+                    />
+                    {/* <button className="submitBtn">Submit</button> */}
+                  </form>
+                </div>
               ) : (
                 <span className="smallBtn" onClick={handleShowInput}>
                   +
@@ -157,8 +165,8 @@ const Folder = ({ index, name, items, id, isOpen }) => {
               {newItems.length >= 1
                 ? newItems.map((item, i) => (
                     <Item
-                      itemIndex={i}
                       key={item.id}
+                      itemIndex={i}
                       folderIndex={index}
                       //index is referring to the index of the folder
                       title={item.title}
@@ -175,15 +183,15 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireClosedFolder">
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
-                <a onClick={() => handleOpenAll()} className="smallBtn">
+                <button onClick={() => handleOpenAll()} className="smallBtn">
                   ⚡️
-                </a>
-                <a
+                </button>
+                <button
                   onClick={() => handleFolderDelete(id)}
                   className="smallBtn delBtn"
                 >
                   x
-                </a>
+                </button>
               </div>
               <img
                 alt="an outline of a folder"
@@ -202,15 +210,15 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
-                <a onClick={() => handleOpenAll()} className="smallBtn">
+                <button onClick={() => handleOpenAll()} className="smallBtn">
                   ⚡️
-                </a>
-                <a
+                </button>
+                <button
                   onClick={() => handleFolderDelete(id)}
                   className="smallBtn delBtn"
                 >
                   x
-                </a>
+                </button>
               </div>
               <img
                 onClick={handleOpenFolder}
@@ -222,39 +230,37 @@ const Folder = ({ index, name, items, id, isOpen }) => {
               <p className="folderNameOpen">{name}</p>
             </div>
             {showFormState ? (
-              <form
-                className="folderForm"
-                onSubmit={(e) => handleAddItem(e)}
-                action=""
-              >
-                <div>
-                  <span
-                    onClick={(e) => handleShowInput(e)}
-                    className="smallBtn formMinusBtn"
-                  >
-                    -
-                  </span>
-                  <input
-                    onChange={handleInputChange}
-                    type="text"
-                    name="title"
-                    placeholder="title"
-                    value={itemInputState.title}
-                    className="folder-input titleInputMobile"
-                  />
-                </div>
-                <div>
-                  <input
-                    onChange={handleInputChange}
-                    type="text"
-                    name="link"
-                    placeholder="link"
-                    value={itemInputState.link}
-                    className="folder-input linkInputMobile"
-                  />
-                </div>
-                <button className="submitBtn">Submit</button>
-              </form>
+              <div onKeyDown={handleKeyDown}>
+                <form className="folderForm" action="" ref={formRef}>
+                  <div>
+                    <span
+                      onClick={(e) => handleShowInput(e)}
+                      className="smallBtn formMinusBtn"
+                    >
+                      -
+                    </span>
+                    <input
+                      onChange={handleInputChange}
+                      type="text"
+                      name="title"
+                      placeholder="title"
+                      value={itemInputState.title}
+                      className="folder-input titleInputMobile"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      onChange={handleInputChange}
+                      type="text"
+                      name="link"
+                      placeholder="link"
+                      value={itemInputState.link}
+                      className="folder-input linkInputMobile"
+                    />
+                  </div>
+                  {/* <button className="submitBtn">Submit</button> */}
+                </form>
+              </div>
             ) : (
               <span className="smallBtn addItemBtn" onClick={handleShowInput}>
                 +
@@ -265,8 +271,8 @@ const Folder = ({ index, name, items, id, isOpen }) => {
               {newItems.length >= 1
                 ? newItems.map((item, i) => (
                     <Item
-                      itemIndex={i}
                       key={item.id}
+                      itemIndex={i}
                       folderIndex={index}
                       //index is referring to the index of the folder
                       title={item.title}
@@ -283,15 +289,15 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireClosedFolder">
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
-                <a onClick={() => handleOpenAll()} className="smallBtn">
+                <button onClick={() => handleOpenAll()} className="smallBtn">
                   ⚡️
-                </a>
-                <a
+                </button>
+                <button
                   onClick={() => handleFolderDelete(id)}
                   className="smallBtn delBtn"
                 >
                   x
-                </a>
+                </button>
               </div>
               <img
                 alt="an outline of a folder"

@@ -1,19 +1,20 @@
-@import '../../Styles/Variables.scss';
+@import "../../Styles/Variables.scss";
 
 .svg {
   height: 10vh;
   width: 10vw !important;
-  filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(1884%) hue-rotate(300deg) brightness(107%) contrast(87%);
+  filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(1884%)
+    hue-rotate(300deg) brightness(107%) contrast(87%);
   margin-left: 1vw;
-  margin-right: .5vw;
+  margin-right: 0.5vw;
   flex-shrink: 0;
-  -webkit-filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(1884%) hue-rotate(300deg) brightness(107%) contrast(87%);
+  -webkit-filter: brightness(0) saturate(100%) invert(22%) sepia(100%)
+    saturate(1884%) hue-rotate(300deg) brightness(107%) contrast(87%);
 }
 
 .lightning {
   color: $folder-outline !important;
 }
-
 
 .entireFolderWithContent {
   width: 80vw;
@@ -35,14 +36,10 @@
 .openFolder {
   margin-top: 1rem;
   margin-right: 40vw;
-  display: flex;  
+  display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
-
-
-
-
 
 .folderItems {
   display: flex;
@@ -68,7 +65,7 @@
 }
 
 .folder-input {
-  padding: .2rem;
+  padding: 0.2rem;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -79,10 +76,7 @@
 
 .folder-input:focus {
   outline: $box-shadow-1 2px solid;
-
-  
 }
-
 
 .smallBtn:hover {
   background-color: rgb(49, 49, 49);
@@ -90,17 +84,17 @@
 
 .smallBtn {
   overflow: visible;
-  
-  padding: .5em;
+
+  padding: 0.5em;
   color: $text-color;
   background-color: rgb(62, 62, 62);
   border: none;
   cursor: pointer;
-  border-radius: .1rem;
-  -webkit-border-radius: .1rem;
-  -moz-border-radius: .1rem;
-  -ms-border-radius: .1rem;
-  -o-border-radius: .1rem;
+  border-radius: 0.1rem;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  -ms-border-radius: 0.1rem;
+  -o-border-radius: 0.1rem;
 }
 
 .buttonNextToFolderDiv {
@@ -115,26 +109,22 @@
   color: $text-color;
 }
 
-
-
-
-
 .folderNameOpen {
-  margin-right: .6rem;
+  margin-right: 0.6rem;
 }
 
 @media (max-width: 850px) {
   .itemsDiv {
-  margin-top: 1.5rem;
-  gap: 2rem;
-  display: flex;
-  flex-direction: column;
-  margin-left: 3rem;
-}
+    margin-top: 1.5rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+  }
 }
 
 @media (max-width: 800px) {
- .svg {
+  .svg {
     width: 20vw !important;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -142,17 +132,16 @@
   .folderForm {
     flex-direction: column;
     align-items: flex-start;
-    height: 12vh;
     margin-left: 2rem;
     flex-wrap: nowrap;
     margin-bottom: 1vh;
     gap: 1rem;
   }
- 
+
   .folder-input {
     width: 40vw;
   }
-  
+
   .titleInputMobile {
     margin-left: 1rem;
   }
@@ -166,17 +155,15 @@
 
   .formMinusBtn {
     margin-left: 1rem;
-
   }
 
   .linkInputMobile {
     margin-left: 57px;
   }
-
 }
 
-@media(max-width: 500px) {
-   .folder-input {
+@media (max-width: 500px) {
+  .folder-input {
     width: 50vw;
   }
 }
@@ -185,5 +172,3 @@
 //   color: $text-color;
 //   background-color: $card-background;
 // }
-
-
