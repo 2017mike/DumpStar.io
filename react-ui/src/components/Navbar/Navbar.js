@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Navbar.scss";
 import Modal from "react-modal";
-import Logo from "../../assets/images/dumpstar.png";
+import Logo from "../../assets/images/dumpstar.webp";
 
 Modal.setAppElement("#root");
 

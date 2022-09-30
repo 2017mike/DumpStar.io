@@ -9,7 +9,7 @@ import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { store } from "./app/store";
 import GetStarted from "./components/GetStarted";
-import Mascot from "./assets/images/Mascot.png";
+import Mascot from "./assets/images/Mascot.webp";
 
 import { reArrangeFolders } from "./features/links/linkSlice";
 
