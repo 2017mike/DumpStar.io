@@ -1,5 +1,5 @@
-<h1> DumpStar.io </h1>
-<p> DumpStar.io is a website where you can store links to your favorite websites! It is a purely front-end application which utilizes React, Redux, and Sass. It uses local storage to store all data. All CSS is done by me and not using a CSS library.
+<h1> dumpStar.io </h1>
+<p> dumpstar.io is a website where you can store links to your favorite websites! It is a purely front-end application which utilizes React, Redux, and Sass. It uses local storage to store all data. All CSS is done by me and not using a CSS library.
 </p>
 <p> My motivation to make DumpStar.io was that I wanted to have a clean, nice-looking place to store all of my favorite links. I'm just not a huge fan of the way favorites or bookmarks look in the browser. </p>
 
