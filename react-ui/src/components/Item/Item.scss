@@ -10,6 +10,12 @@
   }
 }
 
+input {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+
 .item {
   animation: MoveUpDown 2.5s linear infinite;
   cursor: pointer;
@@ -61,6 +67,26 @@
   -o-border-radius: 0.1rem;
 }
 
+.btn-edit-item:hover {
+  background-color: rgb(49, 49, 49);
+}
+
+.btn-edit-item {
+  position: absolute;
+  right: 2.3rem;
+  overflow: visible;
+  padding: 0.5em;
+  color: $text-color;
+  background-color: rgb(62, 62, 62);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.1rem;
+  -webkit-border-radius: 0.1rem;
+  -moz-border-radius: 0.1rem;
+  -ms-border-radius: 0.1rem;
+  -o-border-radius: 0.1rem;
+}
+
 .btn-add-item:hover {
   background-color: rgb(49, 49, 49);
 }
@@ -79,6 +105,14 @@
   -o-border-radius: 0.1rem;
 }
 
+.itemInput {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
 @media (max-width: 1000px) {
   .item {
     font-size: 1rem;
@@ -88,6 +122,12 @@
 @media (max-width: 850px) {
   .item {
     max-width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .btn-edit-item {
+    right: 2rem;
   }
 }
 

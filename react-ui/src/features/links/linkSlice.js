@@ -60,6 +60,12 @@ export const linksSlice = createSlice({
         action.payload.folderIndex
       ].items.filter((item, i) => i !== action.payload.itemIndex);
     },
+
+    editItem: (state, action) => {
+      state.links[action.payload.folderIndex].items[
+        action.payload.itemIndex
+      ].title = action.payload.title;
+    },
     openFolder: (state, action) => {
       state.links[action.payload.index].isOpen =
         !state.links[action.payload.index].isOpen;
@@ -97,6 +103,7 @@ export const {
   removeItem,
   openFolder,
   reArrangeFolders,
+  editItem,
 } = linksSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
