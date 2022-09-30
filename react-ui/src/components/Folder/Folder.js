@@ -11,6 +11,7 @@ import {
   selectLinks,
   addItem,
   openFolder,
+  editFolderName,
 } from "../../features/links/linkSlice";
 import MediaQuery from "react-responsive";
 
@@ -26,10 +27,20 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   const [itemState, setItemState] = useState(items);
 
+  const [editState, setEditState] = useState(false);
+
+  const [folderInputState, setFolderInputState] = useState({
+    folderInput: name,
+  });
+
+  console.log(folderInputState);
+
   const [itemInputState, setItemInputState] = useState({
     title: "",
     link: "",
   });
+
+  const [itemInputFocus, setItemInputFocus] = useState(false);
 
   const handleOpenFolder = () => {
     dispatch(
@@ -44,6 +55,10 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   const handleInputChange = ({ target: { name, value } }) => {
     setItemInputState({ ...itemInputState, [name]: value });
+  };
+
+  const handleEditInputChange = ({ target: { name, value } }) => {
+    setFolderInputState({ ...folderInputState, [name]: value });
   };
 
   const handleFolderDelete = (id) => {
@@ -89,9 +104,26 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   const handleKeyDown = (ev) => {
     if (ev.keyCode === 13) {
+      console.log("hi");
       // enter button
       ev.preventDefault();
       handleAddItem(ev);
+    }
+  };
+
+  const handleEditFolderName = (ev) => {
+    if (ev.keyCode === 13) {
+      // enter button
+      ev.preventDefault();
+      const payload = {
+        index,
+        name: folderInputState.folderInput,
+      };
+      console.log(payload);
+      dispatch(editFolderName(payload));
+      const newState = store.getState();
+      localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
+      setEditState(false);
     }
   };
 
@@ -106,7 +138,7 @@ const Folder = ({ index, name, items, id, isOpen }) => {
                   onClick={() => handleOpenAll()}
                   className="smallBtn lightning"
                 >
-                  ⚡️
+                  ϟ
                 </button>
                 <button
                   onClick={() => handleFolderDelete(id)}
@@ -122,11 +154,35 @@ const Folder = ({ index, name, items, id, isOpen }) => {
                 alt="an outline of a folder"
               ></img>
               {/* <div className="folderItems"> */}
-              <p className="folderNameOpen">{name}</p>
+              <button
+                onClick={() => setEditState(true)}
+                className="smallBtn editBtn"
+              >
+                ✎
+              </button>
+              {editState ? (
+                <form onKeyDown={handleEditFolderName} action="">
+                  <input
+                    className="editFolderInput"
+                    defaultValue={name}
+                    name="folderInput"
+                    onChange={handleEditInputChange}
+                    onBlur={() => setEditState(false)}
+                    autoFocus
+                  />
+                </form>
+              ) : (
+                <p className="folderNameOpen">{name}</p>
+              )}
 
               {showFormState ? (
                 <div onKeyDown={handleKeyDown}>
-                  <form ref={formRef} className="folderForm" action="">
+                  <form
+                    ref={formRef}
+                    onFocus={() => setItemInputFocus(true)}
+                    className="folderForm"
+                    action=""
+                  >
                     <span
                       onClick={(e) => handleShowInput(e)}
                       className="smallBtn"
@@ -180,8 +236,11 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireClosedFolder">
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
-                <button onClick={() => handleOpenAll()} className="smallBtn">
-                  ⚡️
+                <button
+                  onClick={() => handleOpenAll()}
+                  className="smallBtn lightning"
+                >
+                  ϟ
                 </button>
                 <button
                   onClick={() => handleFolderDelete(id)}
@@ -207,8 +266,11 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireFolderWithContent">
             <div className="openFolder">
               <div className="buttonNextToFolderDiv">
-                <button onClick={() => handleOpenAll()} className="smallBtn">
-                  ⚡️
+                <button
+                  onClick={() => handleOpenAll()}
+                  className="smallBtn lightning"
+                >
+                  ϟ
                 </button>
                 <button
                   onClick={() => handleFolderDelete(id)}
@@ -224,7 +286,26 @@ const Folder = ({ index, name, items, id, isOpen }) => {
                 alt="an outline of a folder"
               ></img>
               {/* <div className="folderItems"> */}
-              <p className="folderNameOpen">{name}</p>
+              <button
+                onClick={() => setEditState(true)}
+                className="smallBtn editBtn"
+              >
+                ✎
+              </button>
+              {editState ? (
+                <form onKeyDown={handleEditFolderName} action="">
+                  <input
+                    className="editFolderInput"
+                    defaultValue={name}
+                    name="folderInput"
+                    onChange={handleEditInputChange}
+                    onBlur={() => setEditState(false)}
+                    autoFocus
+                  />
+                </form>
+              ) : (
+                <p className="folderNameOpen">{name}</p>
+              )}
             </div>
             {showFormState ? (
               <div onKeyDown={handleKeyDown}>
@@ -285,8 +366,11 @@ const Folder = ({ index, name, items, id, isOpen }) => {
           <div className="entireClosedFolder">
             <div className="closedFolder">
               <div className="buttonNextToFolderDiv">
-                <button onClick={() => handleOpenAll()} className="smallBtn">
-                  ⚡️
+                <button
+                  onClick={() => handleOpenAll()}
+                  className="smallBtn lightning"
+                >
+                  ϟ
                 </button>
                 <button
                   onClick={() => handleFolderDelete(id)}

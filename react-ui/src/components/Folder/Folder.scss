@@ -12,6 +12,13 @@
     saturate(1884%) hue-rotate(300deg) brightness(107%) contrast(87%);
 }
 
+.editFolderInput {
+  font-size: 1rem;
+  width: 8vw;
+  color: $text-color;
+  background-color: black;
+}
+
 .lightning {
   color: $folder-outline !important;
 }
@@ -72,6 +79,7 @@
   height: 2rem;
   color: $text-color;
   background-color: $item-background;
+  width: 20vw;
 }
 
 .folder-input:focus {
@@ -109,8 +117,18 @@
   color: $text-color;
 }
 
+.editBtn {
+  margin-right: 1vw;
+}
+
 .folderNameOpen {
   margin-right: 0.6rem;
+}
+
+@media (max-width: 800px) {
+  .editFolderInput {
+    width: 20vw;
+  }
 }
 
 @media (max-width: 850px) {
