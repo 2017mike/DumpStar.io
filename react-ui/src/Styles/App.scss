@@ -29,8 +29,32 @@ li {
   list-style: none;
 }
 
+.footerMascot {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2vh;
+}
+
+.footerMascotImg {
+  height: 20vh;
+  object-fit: contain;
+}
+
 @media only screen and (max-width: 500px) {
   .basic-grid {
     margin-left: 0vw;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .footerMascot {
+    position: fixed;
+    bottom: 0vh;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .footerMascot {
+    margin-top: 15vh;
   }
 }

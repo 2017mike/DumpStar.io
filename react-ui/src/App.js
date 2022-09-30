@@ -9,6 +9,7 @@ import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { store } from "./app/store";
 import GetStarted from "./components/GetStarted";
+import Mascot from "./assets/images/Mascot.png";
 
 import { reArrangeFolders } from "./features/links/linkSlice";
 
@@ -80,7 +81,17 @@ function App() {
         </Droppable>
       </DragDropContext>
       {/* placing this conditional render outside of the earlier one due to html structure. We don't want the GetStarted component inside of our <ul></ul> */}
-      {links.links.length <= 0 ? <GetStarted></GetStarted> : null}
+      {links.links.length <= 0 ? (
+        <GetStarted></GetStarted>
+      ) : (
+        <div className="footerMascot">
+          <img
+            className="footerMascotImg"
+            src={Mascot}
+            alt="A cute pink dumpster!"
+          />
+        </div>
+      )}
     </>
   );
 }
