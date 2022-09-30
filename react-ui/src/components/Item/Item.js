@@ -26,7 +26,6 @@ const Item = ({ folderIndex, title, link, id, itemIndex }) => {
       })
     );
     const newState = store.getState();
-    console.log(newState);
     localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
   };
 
