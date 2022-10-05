@@ -33,7 +33,6 @@ const Folder = ({ index, name, items, id, isOpen }) => {
     folderInput: name,
   });
 
-  console.log(folderInputState);
 
   const [itemInputState, setItemInputState] = useState({
     title: "",
@@ -104,7 +103,6 @@ const Folder = ({ index, name, items, id, isOpen }) => {
 
   const handleKeyDown = (ev) => {
     if (ev.keyCode === 13) {
-      console.log("hi");
       // enter button
       ev.preventDefault();
       handleAddItem(ev);
@@ -119,7 +117,6 @@ const Folder = ({ index, name, items, id, isOpen }) => {
         index,
         name: folderInputState.folderInput,
       };
-      console.log(payload);
       dispatch(editFolderName(payload));
       const newState = store.getState();
       localStorage.setItem("myLinks", JSON.stringify(newState.links.links));
